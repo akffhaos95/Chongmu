@@ -10,7 +10,9 @@
          
         <a href="/board">돌아가기</a>
         <a href="/board/{{board.id}}/update">수정하기</a>
-        
+        <form action="/board/{{board.id}}/delete" method="post">
+            <input type="submit" name="delete" value="삭제하기" />
+        </form>
     </div>
 </body>
 <html>  

@@ -20,38 +20,27 @@ export class BoardService {
   }
 
   public async findAll() {
-    const all_board = await this.boradRepository.find();
-    return { "board" : all_board };
+    const boards = await this.boradRepository.find();
+    return { "boards" : boards };
   }
 
   public async findOne(id: number) {
-    const one_board = await this.boradRepository.findOne(id);
-    if(one_board === undefined) {
+    const board = await this.boradRepository.findOne(id);
+    if(board === undefined) {
       throw new NotFoundException(`올바르지 않은 접근 ${id}`)
     }
-    return { "board" : one_board };
-  }
-
-  public async update_board(id: number) {
-    const update_board = await this.boradRepository.findOne(id);
-    if(update_board === undefined) {
-      throw new NotFoundException(`올바르지 않은 접근 ${id}`)
-    }
-    return { "board" : update_board };
+    return { "board" : board };
   }
 
   public async update(id: number, updateBoardDto: UpdateBoardDto) {
-    const update_board = await this.boradRepository.findOne(id);
-    console.log(updateBoardDto.title);
-    console.log(updateBoardDto.context)
-    update_board.title = updateBoardDto.title;
-    update_board.context = updateBoardDto.context;
+    const board = await this.boradRepository.findOne(id);
+    board.title = updateBoardDto.title;
+    board.context = updateBoardDto.context;
 
-    const board = await this.boradRepository.save(update_board)
-    return board.id;
+    await this.boradRepository.save(board)
   }
 
   remove(id: number) {
-    return `This action removes a #${id} board`;
+    this.boradRepository.delete(id);
   }
 }
