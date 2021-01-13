@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title> board page </title>
+    </head>
+    <body>
+        <form action="/board" method="post">
+            <p><input type="text" name="title" placeholder="title"></p>
+            <p><input type="text" name="user" placeholder="input user name"></p>
+            <p><textarea name="context" placeholder="context"></textarea></p>
+            <p><input type="submit"></p>
+        </form>
+        {{#board}}
+            <a href="/board/{{id}}"><p>{{title}} {{user}} </p></a>
+        {{/board}}
+    </body>
+</html>

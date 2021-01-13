@@ -1,0 +1,16 @@
+<html>
+<title> view context page</title>
+<body>
+    <div align ="center">
+        
+        <img width="150px" src="https://blog.kakaocdn.net/dn/S2ONl/btqFtKdDqMd/lLHKO3PBQikibYM7WgsZA0/img.png">
+        <h5>제목 : {{ board.title }}</h5>
+        작성자 : {{board.user}}  조회수 {{ board.view }}
+        <p>{{ board.context }}</p>
+         
+        <a href="/board">돌아가기</a>
+        <a href="/board/{{board.id}}/update">수정하기</a>
+        
+    </div>
+</body>
+<html>  
